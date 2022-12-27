@@ -130,10 +130,13 @@
             if (e.getSource().equals(rebirth)) {
                 BigDecimal odrodzenie;
                 odrodzenie = skarbiec.getPieniadzeLacznie().multiply(BigDecimal.valueOf(0.0000001)).setScale(2, RoundingMode.HALF_UP);
-                int confirm = JOptionPane.showConfirmDialog(ekran, "Czy na pewno chcesz zrobić rebirth? Dostaniesz za to: " + odrodzenie + "% Bonusu", "Potwierdzenie rebirth gry", JOptionPane.YES_NO_OPTION);
+                int confirm = JOptionPane.showConfirmDialog(ekran, "Czy na pewno chcesz zrobić rebirth? Dostaniesz za to: " + odrodzenie.multiply(BigDecimal.valueOf(100)) + "% Bonusu", "Potwierdzenie rebirth gry", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
                     skarbiec.setMnoznikZaRebirth(skarbiec.getMnoznikZaRebirth().add(odrodzenie));
                     resetowanieGry();
+                    pieniadzeZarabianeNaKlikniecie.setText("Pieniadze/klik: " + skarbiec.getPieniadzeZaWcisniecie().multiply(skarbiec.getMnoznikZaRebirth()).setScale(2, RoundingMode.HALF_UP) + "$");
+                    pieniadzeZarabianeNaSekundeInformacja.setText("Pieniadze na sekunde: " + skarbiec.getPieniadzeNaSekunde().multiply(skarbiec.getMnoznikZaRebirth()).setScale(2, RoundingMode.HALF_UP) + "$");
+
                 }
             }
 
@@ -224,7 +227,7 @@
                   if (skarbiec.getPieniadze().compareTo(ulepszeniaPrzychoduPasywnego[ulepszenie.getIndex()].cena) >= 0) {
                       ulepszeniaPrzychoduPasywnego[finalI].zakupPasywnego(skarbiec);
                       pieniadze.setText(skarbiec.getPieniadze().toPlainString());
-                      pieniadzeZarabianeNaSekundeInformacja.setText("Pieniadze na sekunde: " + skarbiec.getPieniadzeNaSekunde().multiply(skarbiec.getMnoznikZaRebirth()).setScale(2, RoundingMode.HALF_UP) + "$");
+                      pieniadzeZarabianeNaSekundeInformacja.setText("Pieniadze/s: " + skarbiec.getPieniadzeNaSekunde().multiply(skarbiec.getMnoznikZaRebirth()).setScale(2, RoundingMode.HALF_UP) + "$");
                       pieniadzeNaSekunde();
                       skarbiec.zapisz();
                       przyciskUlepszenia.setText(ulepszeniaPrzychoduPasywnego[ulepszenie.getIndex()].getNazwa() + " Cena: " + ulepszeniaPrzychoduPasywnego[ulepszenie.getIndex()].getCena());
@@ -244,7 +247,9 @@
               @Override
               public void run() {
                   if (skarbiec.getLicznikUlepszenPasywnych() > 0) {
-                      skarbiec.setPieniadze(skarbiec.getPieniadze().add(skarbiec.getPieniadzeNaSekunde()).multiply(skarbiec.getMnoznikZaRebirth()).setScale(2, RoundingMode.HALF_UP));
+                      skarbiec.setPieniadze(skarbiec.getPieniadze().add(skarbiec.getPieniadzeNaSekunde().multiply(skarbiec.getMnoznikZaRebirth())).setScale(2, RoundingMode.HALF_UP));
+                      skarbiec.setPieniadzeLacznie(skarbiec.getPieniadzeLacznie().add(skarbiec.getPieniadzeNaSekunde()).setScale(2, RoundingMode.HALF_UP));
+
                       pieniadze.setText(String.valueOf(skarbiec.pieniadze));
                   }
               }
