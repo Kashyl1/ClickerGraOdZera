@@ -26,8 +26,9 @@ Jako że nie dokończyłem tego programu znalazł się jeden błąd który zauwa
 zaaktualizowała należy wyłączyć ją i włączyć na nowo.
 
 Przyszłe plany: 
-Jak można zauważyć zostawiłem w grze JButton o nazwie Drzewo Umiejętności, które po kliknięciu nic nie robi.
+-Jak można zauważyć zostawiłem w grze JButton o nazwie Drzewo Umiejętności, które po kliknięciu nic nie robi.
 Jest to opcja którą będę chciał stworzyć o ile wrócę do poprawiania tej gry ponownie. 
+-Zmienić cenę ulepszeń i ich wpływ na gre ponieważ gra jest jak narazie za łatwa
 
 Jak wygląda gra:
 
