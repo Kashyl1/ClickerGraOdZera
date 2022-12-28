@@ -61,7 +61,7 @@ public class Menu extends JFrame {
         drzewoUmiejetnosciKlikania.setBorderPainted(false);
         drzewoUmiejetnosciKlikania.setBackground(new Color(101, 105, 103));
 
-        klikanie = new JButton("Cofnij");
+        klikanie = new JButton("Klikanie");
         klikanie.setSize(szerokosc, wysokosc);
         klikanie.setFont(czcionka);
         klikanie.setForeground(Color.BLACK);
