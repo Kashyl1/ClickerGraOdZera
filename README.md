@@ -22,12 +22,17 @@ progres za rebirth np 10000% to nie można nadużywać tego bonusu by co chwile 
 
 Błędy:
 Jako że nie dokończyłem tego programu znalazł się jeden błąd który zauważyłem:
+
 -Gdy klikamy Rebirth/Reset Gry cena ulepszeń zmienia się w naszym notatniku odpowiedzialnym za zapis gry, lecz nie aktualizuje się w grze, aby się
 zaaktualizowała należy wyłączyć ją i włączyć na nowo.
 
 Przyszłe plany: 
-Jak można zauważyć zostawiłem w grze JButton o nazwie Drzewo Umiejętności, które po kliknięciu nic nie robi.
-Jest to opcja którą będę chciał stworzyć o ile wrócę do poprawiania tej gry ponownie. 
+
+-Jak można zauważyć zostawiłem w grze JButton o nazwie Drzewo Umiejętności, które po kliknięciu nic nie robi oraz 
+pole doświadczenie które się zdobywa po 15 naciśnięciach, ale nigdzie nie można tego wykorzystać
+są to opcje którą będę chciał stworzyć w przyszłości o ile wrócę do rozbudowy tego projektu. 
+
+-Zmienić cenę ulepszeń i ich wpływ na gre ponieważ gra jest jak narazie za łatwa
 
 Jak wygląda gra:
 
