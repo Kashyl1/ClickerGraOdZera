@@ -9,7 +9,7 @@ Program działa następująco:
 
 -Następnie gdy zdobędziemy wystarczającą ilość pieniędzy możemy się pokusić aby kupic ulepszenia klikania / pasywne.
 
--Ulepszenia klikania działają tak że generują więcej pieniędzy za klikanie w skrzynie, a pasywne działają tak że generują pieniądze na sekunde.
+-Ulepszenia klikania działają tak że dodawają więcej pieniędzy za klikanie w skrzynie, a pasywne działają tak że generują więcej pieniądzy na sekunde.
 
 -Po zdobyciu większej sumy pieniędzy można zrobić rebirth aby sobie pomóc, rebirth działa tak że zwiększa bonus który użytkownik zdobywa za klikanie
 oraz generowanie pieniędzy na sekunde, lecz w zamian resetuje Ci cały progres i zostawia tylko tą wartość. 
