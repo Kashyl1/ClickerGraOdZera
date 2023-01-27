@@ -10,6 +10,9 @@
     import java.util.TimerTask;
 
 
+    /**
+     * Klasa odpowiedzialna za wszystkie interakcje z użytkownikiem
+     */
     public class Akcje implements ActionListener {
         Skarbiec skarbiec;
         private final JTextField doswiadczenie;
@@ -32,7 +35,9 @@
         JButton przyciskUlepszeniaKlikania;
         JButton przyciskUlepszeniaPrzychoduPasywnego;
 
-
+        /**
+         * Tworzenie ulepszeń klikania
+         */
         Ulepszenia[] ulepszeniaKlikania = {
                 new Ulepszenia("B-18A", BigDecimal.valueOf(10L), 1, 0),
                 new Ulepszenia("PBM-1", BigDecimal.valueOf(50L), 2.5, 1),
@@ -50,6 +55,9 @@
                 new Ulepszenia("A-7D", BigDecimal.valueOf(1000000000L), 50000000, 13),
                 new Ulepszenia("A-7E", BigDecimal.valueOf(35000000000L), 175000000, 14)};
 
+        /**
+         * Tworzenie ulepszeń przycisku pasywnego
+         */
         Ulepszenia[] ulepszeniaPrzychoduPasywnego = {
                 new Ulepszenia("P-26A-34-M2", BigDecimal.valueOf(25L), 0.25, 0),
                 new Ulepszenia("P-26A-33", BigDecimal.valueOf(150L), 1.5, 1),
@@ -68,7 +76,27 @@
                 new Ulepszenia("F-16A", BigDecimal.valueOf(15000000000000L), 1500000000, 14)};
 
 
-
+        /**
+         * Konstruktor klasy Akcje
+         * Tworzy nowy obiekt klasy Akcje z podanymi parametrami
+         * @param doswiadczenie Pole tekstowe wyświetlające ilość zdobytego doświadczenia
+         * @param pieniadze Pole tekstowe wyświetlające ilość zdobytych pieniędzy
+         * @param skarbiec obiekt klasy Skarbiec, przechowujący informacje o posiadanych pieniądzach
+         * @param pieniadzeZarabianeNaSekundeInformacja pole tekstowe wyświetlające ilość pieniędzy zarabianych na sekundę
+         * @param pieniadzeZarabianeNaKlikniecie pole tekstowe wyświetlające ilość pieniędzy zarabianych na kliknięcie
+         * @param ulepszKlikanie przycisk umożliwiający ulepszanie klikania
+         * @param ulepszPrzychodPasywny przycisk umożliwiający ulepszanie przychodu pasywnego
+         * @param zdobywaj przycisk umożliwiający zdobywanie pieniędzy i doświadczenia
+         * @param klikanie przycisk umożliwiający zdobywanie pieniędzy poprzez klikanie
+         * @param resetGry przycisk resetujący grę
+         * @param rebirth przycisk umożliwiający rebirth
+         * @param ekran okno główne aplikacji
+         * @param panelUlepszenKlikania panel wyświetlający informacje o ulepszeniach klikania
+         * @param panelUlepszenPasywnego panel wyświetlający informacje o ulepszeniach przychodu pasywnego
+         * @param coWyswietlic panel wyświetlający ulepszenia klikania / przychodu pasywnego
+         * @param przyciskUlepszeniaKlikania przycisk umożliwiający ulepszanie klikania
+         * @param przyciskUlepszeniaPrzychoduPasywnego przycisk umożliwiający ulepszanie przychodu pasywnego
+         */
         public Akcje(JTextField doswiadczenie, JTextField pieniadze, Skarbiec skarbiec, JTextField pieniadzeZarabianeNaSekundeInformacja, JTextField pieniadzeZarabianeNaKlikniecie, JButton ulepszKlikanie, JButton ulepszPrzychodPasywny, JButton zdobywaj, JButton klikanie, JButton resetGry, JButton rebirth, JFrame ekran, JPanel panelUlepszenKlikania, JPanel panelUlepszenPasywnego, JPanel coWyswietlic, JButton przyciskUlepszeniaKlikania, JButton przyciskUlepszeniaPrzychoduPasywnego) {
             this.doswiadczenie = doswiadczenie;
             this.pieniadze = pieniadze;
@@ -92,12 +120,14 @@
             pieniadzeNaSekunde();
         }
 
-
+        /**
+         * Metoda odpowiedzialna za nadanie przyciskom akcji po klikięciu
+         * @param e the event to be processed
+         */
         public void actionPerformed(ActionEvent e) {
             if (e.getSource().equals(zdobywaj)) {
                 pieniadzeZaKlikniecie();
             }
-
             if (e.getSource().equals(ulepszKlikanie)) {
                 zdobywaj.setVisible(false);
                 coWyswietlic.setVisible(true);
@@ -139,19 +169,27 @@
 
         }
 
+        /**
+         * Metoda odpowiedzialna za ustawienie nowej wartości pieniędzy po wciśnięciu
+         */
+
         void pieniadzeZaKlikniecie() {
             liczPrzyciski++;
             if (liczPrzyciski == 15) {
                 liczPrzyciski = 0;
                 skarbiec.setDoswiadczenie(skarbiec.getDoswiadczenie().add(skarbiec.getDoswiadczenieZaWcisniecie().multiply(skarbiec.getMnoznikZaRebirth())).setScale(2, RoundingMode.HALF_UP));
             }
-            //  System.out.println("zdobywaj");
             skarbiec.setPieniadze(skarbiec.getPieniadze().add(skarbiec.getPieniadzeZaWcisniecie().multiply(skarbiec.getMnoznikZaRebirth())).setScale(2, RoundingMode.HALF_UP));
             skarbiec.setPieniadzeLacznie(skarbiec.getPieniadzeLacznie().add(skarbiec.getPieniadzeZaWcisniecie().setScale(2, RoundingMode.HALF_UP)));
             doswiadczenie.setText(String.valueOf(skarbiec.doswiadczenie));
             pieniadze.setText(String.valueOf(skarbiec.pieniadze));
             skarbiec.zapisz();
         }
+
+        /**
+         * Metoda odpowiedzialna za tworzenie przycisków klikania oraz nadaniu im słuchacza który redukuje pieniądze o wartośc ulepszenia
+         * oraz zwiększa przychód
+         */
        void tworzeniePrzyciskowKlikania() {
           panelUlepszenKlikania.setVisible(false);
           GridBagConstraints c = new GridBagConstraints();
@@ -192,6 +230,10 @@
               });
           }
       }
+        /**
+         * Metoda odpowiedzialna za tworzenie przycisków przychodu pasywnego oraz nadaniu im słuchacza który redukuje pieniądze o wartośc ulepszenia
+         * oraz zwiększa przychód
+         */
       void tworzenieGuzikowPasywnegoPrzychodu() {
           panelUlepszenPasywnego.setVisible(false);
           GridBagConstraints c = new GridBagConstraints();
@@ -235,6 +277,10 @@
           }
       }
 
+        /**
+         * Metoda odpowiedzialna za generowanie pieniędzy na sekunde
+         */
+
       void pieniadzeNaSekunde() {
             if (timer != null) {
                 timer.cancel();
@@ -244,7 +290,7 @@
               @Override
               public void run() {
                   if (skarbiec.getLicznikUlepszenPasywnych() > 0) {
-                      skarbiec.setPieniadze(skarbiec.getPieniadze().add(skarbiec.getPieniadzeNaSekunde()).multiply(skarbiec.getMnoznikZaRebirth()).setScale(2, RoundingMode.HALF_UP));
+                      skarbiec.setPieniadze(skarbiec.getPieniadze().add((skarbiec.getPieniadzeNaSekunde()).multiply(skarbiec.getMnoznikZaRebirth())).setScale(2, RoundingMode.HALF_UP));
                       pieniadze.setText(String.valueOf(skarbiec.pieniadze));
                   }
               }
@@ -252,6 +298,9 @@
             timer.scheduleAtFixedRate(task, 0, 1000);
         }
 
+        /**
+         * Metoda odpowiedzialna za całkowity reset gry
+         */
         void resetowanieGry() {
             for (Ulepszenia ulepszenia : ulepszeniaKlikania) {
                 ulepszenia.domyslneUlepszenia();
