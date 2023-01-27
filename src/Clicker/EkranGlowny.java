@@ -3,6 +3,11 @@
     import javax.swing.*;
     import java.awt.*;
 
+    /**
+     * Klasa odpowiedzialna za tworzenie paneli oraz nadaniu dodaniu ich do ekranu
+     * Dodatkowo dodaje ActionListenera do przycisków
+     */
+
     public class EkranGlowny extends Menu {
         JPanel kliker;
         JPanel panelUlepszenKlikania;
@@ -18,12 +23,11 @@
             JPanel informacje = new JPanel(new GridBagLayout());
             coWyswietlic = new JPanel(new CardLayout());
 
+
             kliker = new JPanel(new GridBagLayout());
             panelUlepszenKlikania = new JPanel(new GridBagLayout());
             panelUlepszenPasywnego = new JPanel(new GridBagLayout());
             panelUlepszeniaDrzewkaKlikania = new JPanel(new GridBagLayout());
-
-
 
             zakladki.setBackground(new Color(101, 105, 103));
             informacje.setBackground(new Color(101, 105, 103));
@@ -112,7 +116,6 @@
             ekran.setTitle("Clicker");
             ekran.setResizable(true);
             ekran.setLocationRelativeTo(null);
-
 
 
             Akcje akcje = new Akcje(doswiadczenie, pieniadze, skarbiec, pieniadzeZarabianeNaSekundeInformacja, pieniadzeZarabianeNaKlikniecie, ulepszKlikanie, ulepszPrzychodPasywny, zdobywaj, klikanie, resetGry, rebirth, ekran, panelUlepszenKlikania, panelUlepszenPasywnego, coWyswietlic, przyciskUlepszeniaKlikania, PrzyciskUlepszeniaPasywnego);
