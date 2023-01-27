@@ -5,10 +5,23 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
+/**
+ * Klasa odpowiedzialna za komponenty wyświetlane na ekranie
+ */
+
 public class Menu extends JFrame {
+    /**
+     * Tworzy nowy obiekt klasy Skarbiec
+     */
     Skarbiec skarbiec = new Skarbiec();
+    /**
+     * szerokość oraz wysokość
+     */
     int wysokosc = 50;
     int szerokosc = 50;
+    /**
+     * Przyciski
+     */
     JButton zdobywaj;
     JButton ulepszKlikanie;
     JButton ulepszPrzychodPasywny;
@@ -16,13 +29,23 @@ public class Menu extends JFrame {
     JButton drzewoUmiejetnosciKlikania;
     JButton klikanie;
     JButton resetGry;
+    /**
+     * Tekst wyświetlany na ekranie
+     */
     JTextField pieniadze;
     JTextField doswiadczenie;
     JTextField pieniadzeZarabianeNaSekundeInformacja;
     JTextField pieniadzeZarabianeNaKlikniecie;
+    /**
+     * Obrazki na ekranie
+     */
     JLabel ikonaPieniadza;
     JLabel ikonaDoswiadczenia;
     JLabel dodatekJeden;
+
+    /**
+     * Konstruktor klasy Menu odpowiedzialny za stworzenie komponentów oraz nadaniu im różnych parametrów
+     */
     public Menu() {
         Font czcionka = new Font("Serif", Font.BOLD, 20);
         ImageIcon obrazek = new ImageIcon("C:\\Users\\assai\\Desktop\\KlikerZdjecia\\klikanie.jpg");
@@ -60,6 +83,7 @@ public class Menu extends JFrame {
         drzewoUmiejetnosciKlikania.setForeground(Color.BLACK);
         drzewoUmiejetnosciKlikania.setBorderPainted(false);
         drzewoUmiejetnosciKlikania.setBackground(new Color(101, 105, 103));
+        drzewoUmiejetnosciKlikania.setVisible(false);
 
         klikanie = new JButton("Klikanie");
         klikanie.setSize(szerokosc, wysokosc);
@@ -78,6 +102,7 @@ public class Menu extends JFrame {
         ImageIcon obrazekDoswiadczenia = new ImageIcon("C:\\Users\\assai\\Desktop\\KlikerZdjecia\\Doswiadczenie.png");
         Image zdjecieDoswiadczenia = obrazekDoswiadczenia.getImage().getScaledInstance(szerokosc, wysokosc, Image.SCALE_SMOOTH);
         ikonaDoswiadczenia = new JLabel(new ImageIcon(zdjecieDoswiadczenia));
+        ikonaDoswiadczenia.setVisible(false);
 
         doswiadczenie = new JTextField(String.valueOf(skarbiec.getDoswiadczenie()));
         doswiadczenie.setPreferredSize(new Dimension(szerokosc + 250, wysokosc));
@@ -86,10 +111,12 @@ public class Menu extends JFrame {
         doswiadczenie.setEditable(false);
         doswiadczenie.setBorder(new EmptyBorder(0, 0, 0, 10));
         doswiadczenie.setForeground(Color.CYAN);
+        doswiadczenie.setVisible(false);
 
         ImageIcon obrazekPieniadza = new ImageIcon("C:\\Users\\assai\\Desktop\\KlikerZdjecia\\zloto.jpg");
         Image zdjeciePieniadza = obrazekPieniadza.getImage().getScaledInstance(szerokosc, wysokosc, Image.SCALE_SMOOTH);
         ikonaPieniadza = new JLabel(new ImageIcon(zdjeciePieniadza));
+
 
         pieniadze = new JTextField(String.valueOf(skarbiec.getPieniadze()));
         pieniadze.setPreferredSize(new Dimension(szerokosc + 250, wysokosc)); // szerokosc //  wysokosc
